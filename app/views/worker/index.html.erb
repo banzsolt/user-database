@@ -1,0 +1,26 @@
+<%= link_to("+new user", :action => 'new')  %>
+
+
+<table class="listing" summary="Worker list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Email</th>
+      <th>Facebook</th>
+      <th>Google</th>
+      <th>Twitter</th>
+      <th>Vine</th>
+    </tr>
+    <% @workers.each do |worker| %>
+    <tr>
+      <td><%= worker.id %></td>
+      <td><%= worker.email %></td>
+      <td><%= worker.facebook %></td>
+      <td><%= worker.google %></td>
+      <td><%= worker.twitter %></td>
+      <td><%= worker.vine %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => 'edit', :id => worker.id}, :class => 'action edit') %>
+      </td>
+    </tr>
+    <% end %>
+</table>
