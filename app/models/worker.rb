@@ -11,8 +11,8 @@ class Worker < ActiveRecord::Base
 		data = HTTParty.get('https://api.worldoftanks.eu/wot/globalwar/provinces/?application_id=d36cb7cb571852eb22463df8524a443f&map_id=1')
 		data = HTTParty.get('https://api.worldoftanks.eu/wot/globalwar/provinces/?application_id=d36cb7cb571852eb22463df8524a443f&map_id=1')
 
-    	self.how_important = -10
-    	self.test3
+    	# self.how_important = -10
+    	self.delay(how_important: -10).test3
 
 
   	end
@@ -22,7 +22,7 @@ class Worker < ActiveRecord::Base
 		
 		i = 0
 
-		while i < 10  do
+		while i < 3  do
 
 			data = HTTParty.get('https://api.worldoftanks.eu/wot/globalwar/provinces/?application_id=d36cb7cb571852eb22463df8524a443f&map_id=1')
 
@@ -48,6 +48,8 @@ class Worker < ActiveRecord::Base
 		data = HTTParty.get('https://api.worldoftanks.eu/wot/globalwar/provinces/?application_id=d36cb7cb571852eb22463df8524a443f&map_id=1')
 
 		puts "Test 2 called"
+
+		self.how_important = -10
 
 		self.test3
 		self.call_an_instance_method
@@ -75,6 +77,6 @@ class Worker < ActiveRecord::Base
 	# handle_asynchronously :test
 	handle_asynchronously :test2, :queue => 'test2'
 	handle_asynchronously :test3, :priority => -1, :run_at => Proc.new { when_to_run }, :queue => 'test2'
-	handle_asynchronously :call_an_instance_method, :priority => Proc.new { self.how_important }, :queue => 'how_important'
+	handle_asynchronously :call_an_instance_method, :priority => Proc.new { |i| i.how_important }, :queue => 'how_important'
 
 end
