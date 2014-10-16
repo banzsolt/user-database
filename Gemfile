@@ -44,3 +44,5 @@ gem "daemons"
 
 gem 'httparty', '~> 0.13.1'
 
+gem 'unicorn', '~> 4.8.3'
+
