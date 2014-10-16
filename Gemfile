@@ -45,3 +45,5 @@ gem "daemons"
 gem 'httparty', '~> 0.13.1'
 
 gem 'foreman', '~> 0.75.0'
+
+gem 'workless', '~> 1.2.3'
