@@ -12,7 +12,7 @@ class Worker < ActiveRecord::Base
 		data = HTTParty.get('https://api.worldoftanks.eu/wot/globalwar/provinces/?application_id=d36cb7cb571852eb22463df8524a443f&map_id=1')
 
     	# self.how_important = -10
-    	# self.delay(: .test3
+    	self.delay(how_important: -10).test3
 
 
   	end
