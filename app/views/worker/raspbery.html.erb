@@ -1,0 +1,266 @@
+<div id="left" style="float: left; clear: both; width: 250px; position: relative">
+
+    <div id="table-music">
+      <table>
+        <th>
+          <th>ID</th>
+          <th>Name</th>
+        </th>
+            <% @musics.each do |music| %>
+              <tr>
+                <td><%= music.id %></td>
+                <td><%= music.Name %></td>
+            </tr>
+            <%end%>
+      </table>
+    </div>
+
+
+    <div>
+      <h2>Add new music</h2>
+      <%= flash[:notice] %>
+      </br>
+
+      <%= form_for(:music, :url => {:action => 'create_music'}) do |f| %>
+
+          <table summary="Page form fields">
+            <tr>
+              <th><%= f.label(:music, "Name") %></th>
+              <td><%= f.text_field(:Name) %></td>
+            </tr>
+          </table>
+
+          <div class="form-buttons">
+            <%= submit_tag("Add new music") %>
+          </div>
+
+      <% end %>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div id="table-music">
+      <table>
+        <th>
+        <th>ID</th>
+        <th>Name</th>
+        </th>
+        <% @stores.each do |store| %>
+            <tr>
+              <td><%= store.id %></td>
+              <td><%= store.name %></td>
+            </tr>
+        <%end%>
+      </table>
+    </div>
+
+
+    <div>
+      <h2>Add new store</h2>
+      <%= flash[:notice] %>
+      </br>
+
+      <%= form_for(:store, :url => {:action => 'create_store'}) do |f| %>
+
+          <table summary="Page form fields">
+            <tr>
+              <th><%= f.label(:store, "Name") %></th>
+              <td><%= f.text_field(:name) %></td>
+            </tr>
+          </table>
+
+          <div class="form-buttons">
+            <%= submit_tag("Add new store") %>
+          </div>
+
+      <% end %>
+    </div>
+
+</div>
+<div id="midle" style="float: left; position: relative; width: 250px;">
+
+  <div id="table-attributes">
+    <table>
+      <th>
+      <th>AttributeID</th>
+      <th>MusicID</th>
+      </th>
+      <% @music_attributes.each do |music_attribute| %>
+          <tr>
+            <td><%= music_attribute.attribute_id %></td>
+            <td><%= music_attribute.music_id %></td>
+          </tr>
+      <%end%>
+    </table>
+  </div>
+
+
+  <div>
+    <h2>Add new attribute</h2>
+    <%= flash[:notice] %>
+    </br>
+
+    <%= form_for(:music_attribute, :url => {:action => 'create_music_attribute'}) do |f| %>
+
+        <table summary="Page form fields">
+          <tr>
+            <th><%= f.label(:music_attribute, "attribute_id") %></th>
+            <td><%= f.text_field(:attribute_id) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label(:music_attribute, "music_id") %></th>
+            <td><%= f.text_field(:music_id) %></td>
+          </tr>
+        </table>
+
+        <div class="form-buttons">
+          <%= submit_tag("Add new attribute") %>
+        </div>
+
+    <% end %>
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div id="table-attributes">
+    <table>
+      <th>
+      <th>AttributeID</th>
+      <th>StoreID</th>
+      </th>
+      <% @store_attributes.each do |store_attribute| %>
+          <tr>
+            <td><%= store_attribute.attribute_id %></td>
+            <td><%= store_attribute.store_id %></td>
+          </tr>
+      <%end%>
+    </table>
+  </div>
+
+
+  <div>
+    <h2>Add new attribute</h2>
+    <%= flash[:notice] %>
+    </br>
+
+    <%= form_for(:store_attribute, :url => {:action => 'create_store_attribute'}) do |f| %>
+
+        <table summary="Page form fields">
+          <tr>
+            <th><%= f.label(:store_attribute, "attribute_id") %></th>
+            <td><%= f.text_field(:attribute_id) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label(:store_attribute, "store_id") %></th>
+            <td><%= f.text_field(:store_id) %></td>
+          </tr>
+        </table>
+
+        <div class="form-buttons">
+          <%= submit_tag("Add new attribute") %>
+        </div>
+
+    <% end %>
+  </div>
+
+</div>
+<div id="right" style="float: left; position: relative; width: 250px;">
+
+  <div id="table-attributes">
+    <table>
+      <th>
+      <th>ID</th>
+      <th>ParentID</th>
+      <th>AttributeName</th>
+      <th>AttributeLevel</th>
+      <th>Description</th>
+      </th>
+      <% @attributes.each do |attribute| %>
+          <tr>
+            <td><%= attribute.id %></td>
+            <td><%= attribute.parent_id %></td>
+            <td><%= attribute.attribute_name %></td>
+            <td><%= attribute.attribute_level %></td>
+            <td><%= attribute.description %></td>
+          </tr>
+      <%end%>
+    </table>
+  </div>
+
+
+  <div>
+    <h2>Add new attribute</h2>
+    <%= flash[:notice] %>
+    </br>
+
+    <%= form_for(:attribute, :url => {:action => 'create_attribute'}) do |f| %>
+
+        <table summary="Page form fields">
+          <tr>
+            <th><%= f.label(:attribute, "parent_id") %></th>
+            <td><%= f.text_field(:parent_id) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label(:attribute, "attribute_name") %></th>
+            <td><%= f.text_field(:attribute_name) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label(:attribute, "attribute_level") %></th>
+            <td><%= f.text_field(:attribute_level) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label(:attribute, "description") %></th>
+            <td><%= f.text_field(:description) %></td>
+          </tr>
+        </table>
+
+        <div class="form-buttons">
+          <%= submit_tag("Add new attribute") %>
+        </div>
+
+    <% end %>
+  </div>
+
+</div>
+<div id="bottom" style="float: left; clear: both; width: 250px; position: relative">
+
+  <%= form_for(:playlist_params, :url => {:action => 'generate_playlist'}) do |f| %>
+
+      <table summary="Page form fields">
+        <tr>
+          <th><%= f.label(:store_id, "store_id") %></th>
+          <td><%= f.text_field(:store_id) %></td>
+        </tr>
+
+      <div class="form-buttons">
+        <%= submit_tag("generate_playlist") %>
+      </div>
+
+  <% end %>
+
+
+  <%= form_for(:attribute_params, :url => {:action => 'generate_playlist_2'}) do |f| %>
+
+      <table summary="Page form fields">
+        <tr>
+          <th><%= f.label(:attribute_id, "attribute_id") %></th>
+          <td><%= f.text_field(:attribute_id) %></td>
+        </tr>
+
+        <div class="form-buttons">
+          <%= submit_tag("generate_playlist") %>
+        </div>
+
+  <% end %>
+
+</div>

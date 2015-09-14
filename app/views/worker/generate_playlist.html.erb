@@ -1,0 +1,14 @@
+<div id="table-attributes">
+  <table>
+    <th>
+    <th>AttributeID</th>
+    <th>MusicID</th>
+    </th>
+    <% @musics.each do |music| %>
+        <tr>
+          <td><%= music.id %></td>
+          <td><%= music.Name %></td>
+        </tr>
+    <%end%>
+  </table>
+</div>
